@@ -29,4 +29,11 @@ export class Deferred<T> {
     this._reject(reason)
   }
 
+  callback = (error: any, value?: T | PromiseLike<T>) => {
+    if (error) {
+      this._resolve(error)
+    } else {
+      this._reject(value)
+    }
+  }
 }
